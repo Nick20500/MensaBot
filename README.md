@@ -1,2 +1,2 @@
 # MensaBot
-A Bot one could run on their own device or on a server to retrieve the daily menues of the ETH and Uni Zurich Mensa.
+A Bot to retrieve the daily menues of the ETH and Uni Zurich Mensa and send them as a compact Whatsapp message.
