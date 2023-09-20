@@ -185,17 +185,20 @@ def sendMsg():
     )
 
 #Main -----------------------------------------------------------------------------------------------------------------------------------------------
-
 #create BODY of MSG
 uniMsg = getUniMsgV2()
-
 polyMsg = getPolyMsgV2()
 
 
 #create MSG for Whatsapp API
-phone_number_id = ""
-access_token = ""
-recipient_phone_number = ""
+credentialFile = open("C:\\Users\\Nickt\MensaBot\\Credential Data\\whatsappAPICredentials.json")
+credentialData = json.load(credentialFile)
+
+phone_number_id = credentialData["phone_number_id"]
+access_token = credentialData["access_token"]
+recipient_phone_number = credentialData["recipient_phone_number"]
+
+credentialFile.close()
 
 url = f"https://graph.facebook.com/v13.0/{phone_number_id}/messages"
 headers = {
@@ -294,7 +297,5 @@ data = {
 
 response = sendMsg()
 
-#print("Whatsapp API status: " + str(response.content) + "\n")
-#print(msgOut)
-
+print("Whatsapp API status: " + str(response.content) + "\n")
 #End main -------------------------------------------------------------------------------------------------------------------------------------
