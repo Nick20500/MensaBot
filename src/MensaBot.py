@@ -191,7 +191,7 @@ polyMsg = getPolyMsgV2()
 
 
 #create MSG for Whatsapp API
-credentialFile = open("C:\\Users\\Nickt\MensaBot\\Credential Data\\whatsappAPICredentials.json")
+credentialFile = open(".\\Credential Data\\whatsappAPICredentials.json")
 credentialData = json.load(credentialFile)
 
 phone_number_id = credentialData["phone_number_id"]
