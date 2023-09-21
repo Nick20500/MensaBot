@@ -7,9 +7,31 @@ from xml.etree import ElementTree as ET
 import random
 import json
 import locale
+import logging
 
 #setting the language for later use of the weekday
 locale.setlocale(locale.LC_TIME, 'de_DE')
+
+#Set up for logging
+logging.basicConfig(filename="./Logs/test.log", encoding="utf-8")
+def log(level: str, string: str):
+    if level not in {"info", "debug", "warning", "error", "critical"}:
+        raise ValueError("Invalid log level. Use 'info', 'debug', 'warning', 'error' or 'critical'.")
+
+    timestamp = datetime.datetime.now().strftime("%H:%M:%S  %d-%m-%Y")
+    logtext = timestamp + string + "\n"
+    match level:
+        case "debug":
+            logging.debug(logtext)
+        case "info":
+            logging.info(logtext)
+        case "warning":
+            logging.warning(logtext)
+        case "error":
+            logging.error(logtext)
+        case "critical":
+            logging.critical(logtext)
+    
 
 #Legacycode from old APIs .......................................................................
 def getUniNaerwaerthe(xml, makro):
@@ -185,6 +207,7 @@ def sendMsg():
     )
 
 #Main -----------------------------------------------------------------------------------------------------------------------------------------------
+log("info", "MensaBot START")
 #create BODY of MSG
 uniMsg = getUniMsgV2()
 polyMsg = getPolyMsgV2()
@@ -296,6 +319,6 @@ data = {
 }
 
 response = sendMsg()
-
-print("Whatsapp API status: " + str(response.content) + "\n")
+log("info", "Whatsapp API status: " + str(response.status_code) + " - " + str(response.content))
+print("Whatsapp API status: " + str(response.status_code) + " - " + str(response.content) + "\n")
 #End main -------------------------------------------------------------------------------------------------------------------------------------
