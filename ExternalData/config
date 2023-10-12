@@ -1,2 +1,2 @@
-executionLogFilePath: "C:\Users\Nickt\MensaBot\Logs\execution.log"
-credentialFilePath: "C:\Users\Nickt\MensaBot\ExternalData\whatsappAPICredentials.json"
+executionLogFilePath: "ABSOLUTE\PATH\TO\Logs\execution.log"
+credentialFilePath: "ABSOLUTE\PATH\TO\ExternalData\whatsappAPICredentials.json"
