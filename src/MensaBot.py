@@ -8,18 +8,27 @@ import random
 import json
 import locale
 import logging
+import configparser
 
 #setting the language for later use of the weekday
 locale.setlocale(locale.LC_TIME, 'de_DE')
 
+# Create a ConfigParser object & Read the INI file
+config = configparser.ConfigParser()
+config.read('./ExternalData/config.ini')
+
+# Access the values
+executionLogFilePath = config['Paths']['executionLogFilePath']
+credentialFilePath = config['Paths']['credentialFilePath']
+
 #Set up for logging
-logging.basicConfig(filename="./Logs/test.log", encoding="utf-8")
+logging.basicConfig(filename=executionLogFilePath,filemode='a', force=True, encoding="utf-8", level=logging.INFO)
 def log(level: str, string: str):
     if level not in {"info", "debug", "warning", "error", "critical"}:
         raise ValueError("Invalid log level. Use 'info', 'debug', 'warning', 'error' or 'critical'.")
 
     timestamp = datetime.datetime.now().strftime("%H:%M:%S  %d-%m-%Y")
-    logtext = timestamp + string + "\n"
+    logtext = timestamp + ", " +  string
     match level:
         case "debug":
             logging.debug(logtext)
@@ -158,15 +167,17 @@ def getUniMsgV2():
         
     else:
         uniMsg += "Diese Daten sind leider nicht vorhanden.\n"
+        log("warning", responseObereMensaFarm.status_code + "UZH-ObereMensa, Menu Farm - Fehler beim Laden")
 
     responseObereMensaButcher = requests.get("https://app.food2050.ch/uzh-zentrum/obere-mensa/food-profile/" + date +"-mittagsverpflegung-butcher")
     if(responseObereMensaButcher.status_code == 200):
         #process the HTML data from the Uni-"API" for the Butcher Menu
         responseObereMensaButcher = parseUniHTML("Butcher", responseObereMensaButcher.text)
-        uniMsg += generateMenuMSG( responseObereMensaButcher)
+        uniMsg += generateMenuMSG(responseObereMensaButcher)
         
     else:
         uniMsg += "Diese Daten sind leider nicht vorhanden.\n"
+        log("warning", responseObereMensaButcher.status_code + "UZH-ObereMensa, Menu Butcher - Fehler beim Laden")
 
     return uniMsg
 
@@ -196,6 +207,7 @@ def getPolyMsgV2():
         polyMsg = generateMenuMSG(menusPolyMensa)
     else:
         polyMsg = "Diese Daten sind leider nicht vorhanden"
+        log("warning", responsePolyMensa.status_code + "ETH-PolyMensa, Fehler beim Laden")
 
     return polyMsg
 
@@ -214,7 +226,7 @@ polyMsg = getPolyMsgV2()
 
 
 #create MSG for Whatsapp API
-credentialFile = open(".\\Credential Data\\whatsappAPICredentials.json")
+credentialFile = open(credentialFilePath)
 credentialData = json.load(credentialFile)
 
 phone_number_id = credentialData["phone_number_id"]
@@ -319,6 +331,6 @@ data = {
 }
 
 response = sendMsg()
-log("info", "Whatsapp API status: " + str(response.status_code) + " - " + str(response.content))
-print("Whatsapp API status: " + str(response.status_code) + " - " + str(response.content) + "\n")
+log("info", "MensaBot Ende - Whatsapp API status: " + str(response.status_code) + ("" if response.status_code == 200 else " - " + str(response.content)))
+print("Whatsapp API status: " + str(response.status_code) + ("" if response.status_code == 200 else " - " + str(response.content)))
 #End main -------------------------------------------------------------------------------------------------------------------------------------
