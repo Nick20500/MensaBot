@@ -1,0 +1,16 @@
+{
+  "name": "mensabot",
+  "version": "1.0.0",
+  "description": "A Bot to retrieve the daily menues of the ETH and Uni Zurich Mensa and send them as a compact Whatsapp message.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
