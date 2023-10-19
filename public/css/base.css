@@ -19,6 +19,9 @@ body{
         & i {
             font-size: x-large;
         }
+        & i:hover {
+            cursor: pointer;
+        }
         > i {
             margin-left: 1em;
         } 
