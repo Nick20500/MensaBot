@@ -1,0 +1,36 @@
+:root{
+    --base-color-bright: #F5F5F5;
+    --base-color-dark: #0A0A0A;
+    --primary-color: #F63F3C;
+    --secondary-color: #403ef4;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    overflow-y: hidden;
+
+    & header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--primary-color);
+        
+        & i {
+            font-size: x-large;
+        }
+        > i {
+            margin-left: 1em;
+        } 
+        > h1 + i {
+            margin-right: 1em;
+        }
+    }
+
+    & main {
+        background: linear-gradient(135deg, #ffb938, #fd5a1f);
+        height: calc(100vh - 14vh);
+        overflow-y: auto;
+    }
+
+}
