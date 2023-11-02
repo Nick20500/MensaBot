@@ -1,45 +1,10 @@
-main {
-    display: flex;
-    justify-content: center;    
+main {  
 
     & article {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 500px;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        background-color: var(--base-color-bright);
-        padding: 25px;
-        border-radius: 10px;
-        height: fit-content;
-
         & h3 {
             text-align: center;
             font-weight: lighter;
             margin-bottom: 3em;
-        }
-
-        & button {
-            background-color: var(--secondary-color);
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            width: 30%;
-            cursor: pointer;
-            box-shadow: 0 0.375em 0 var(--base-color-dark);
-            transition-timing-function: ease-in; 
-        }
-        & button:hover {
-            filter: brightness(85%) ;
-        }
-
-        & button:active {
-            box-shadow: none;
-            background-color: var(--base-color-dark);
-            color: var(--base-color-bright);
-            filter: none;
-            transform: translateY(00.375em);
         }
     }
 }

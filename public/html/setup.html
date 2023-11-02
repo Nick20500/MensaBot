@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MensaBot</title>
+
+        <link rel="stylesheet" type="text/css" href="/css/base.css"/> 
+        <link rel="stylesheet" type="text/css" href="/css/setup.css"/>
+        <script src="https://kit.fontawesome.com/c1087ec6fc.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <i class="fa-solid fa-moon"></i>
+            <h1>MensaBot</h1>
+            <i class="fa-solid fa-circle-user"></i>
+        </header>
+        <main>
+            <article>
+                <header>
+                    <ul class="tab-group">
+                        <li class="tab">Create Account</li>
+                        <li class="tab">Mensas & Menues</li>
+                        <li class="tab active">Message Settings</li>
+                    </ul>
+                </header>
+                <form id="login">
+                    <div id="create-account-form-part">
+                        <h3>Create your Mensabot Account</h3>
+                        <label for="phone">Phone Number</label>
+                        <input name="phone" type="tel" id="phone"/>
+                        <label for="password">Password</label>
+                        <input name="password" type="password" id="password"/>
+                        <a action="/">Next <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                    <div id="mensas-and-menues-form-part">
+                        <h3>Choose the Mensas & Menues</h3>
+                        <div class="mensa-checkboxes">
+                            <input type="checkbox" id="ETH-Polymensa" value="ETH-Polymensa">
+                            <label for="ETH-Polymensa">ETH - Polymensa</label>
+                        </div>
+                        <div class="mensa-checkboxes">
+                            <input type="checkbox" id="UZH-Oberemensa" value="UZH-Oberemensa">
+                            <label for="UZH-Oberemensa">UZH - Oberemensa</label>
+                        </div>
+                        <a action="/">Next <i class="fa-solid fa-angle-right"></i></a>
+                    </div>
+                    <div class="activeTab" id="message-settings-form-part">
+                        <h3>Schedule the MensaBot messages</h3>
+                        <div id="schedule-form-part">
+                            <input type="checkbox" id="monday" value="monday">
+                            <label for="monday">Monday</label>
+                            <input type="checkbox" id="tuesday" value="tuesday">
+                            <label for="tuesday">Tuesday</label>
+                            <input type="checkbox" id="wednesday" value="wednesday">
+                            <label for="wednesday">Wednesday</label>
+                            <input type="checkbox" id="thursday" value="thursday">
+                            <label for="thursday">Thursday</label>
+                            <input type="checkbox" id="friday" value="friday">
+                            <label for="friday">Friday</label>
+                            <input type="checkbox" id="saturday" value="saturday">
+                            <label for="saturday">Saturday</label>
+                            <input type="checkbox" id="sunday" value="sunday">
+                            <label for="sunday">Sunday</label>
+                            <input type="time" id="time" required>
+                        </div>
+                        <button>Submit</i></button>
+                    </div>
+                </form>
+            </article>
+        </main>
+    </body>
+    <script>
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            preferredCountries: ["ch", "de", "us"],
+            utilsScript:
+            "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+    </script>
+</html>

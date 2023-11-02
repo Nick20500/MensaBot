@@ -1,0 +1,128 @@
+.tab-group {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.tab {
+    padding-left: 3em;
+    padding: 1em;
+}
+
+.active {
+    background-color: var(--primary-color);
+}
+
+@keyframes slideTabBackground {
+    0% {
+        background-position: -100% 0; /* Start from the left, shifted by -100% */
+    }
+    100% {
+        background-position: 100% 0; /* Move to the right, shifted by 100% */
+    }
+}
+
+.tab:first-child{
+    border-top-left-radius: 10px;
+}
+
+.tab:last-child {
+    border-top-right-radius: 10px;
+}
+form {
+    & div {
+        gap: 10px;
+        display: none;
+        flex-direction: column;
+
+        & input {
+            border-color: black;
+            border-radius: 3px;
+            font-size: x-large;
+            width: 230px;
+            padding: 0;
+            margin: 0;
+            border-style: solid
+        }
+
+        .mensa-checkboxes {
+            display: flex;
+            flex-direction: row;
+
+            & input {
+                width: auto;
+            }
+        }
+
+        #schedule-form-part {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: 25px 25px 25px 25px 25px 25px 25px;
+
+            & input {
+                grid-column: 1;
+                width: 50%;
+            }
+
+            & input[type="time"] {
+                grid-column: 3;
+                grid-row: 4;
+                width: 80%;
+            }
+
+            & label {
+                grid-column: 2;
+                align-self: center;
+            }
+        }
+
+        & a {
+            padding: 5px;
+            margin-top: 3em;
+            align-self: center;
+        }
+
+        & button {
+            text-align: center;
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-radius: 5px;
+            width: 30%;
+            cursor: pointer;
+            box-shadow: 0 0.375em 0 var(--base-color-dark);
+            transition-timing-function: ease-in; 
+            text-decoration: none;
+            color: inherit;
+            align-self: center;
+        }
+        & button:hover {
+            filter: brightness(85%) ;
+        }
+
+        & button:active  {
+            box-shadow: none;
+            background-color: var(--base-color-dark);
+            color: var(--base-color-bright);
+            filter: none;
+            transform: translateY(00.375em);
+        }
+
+        .iti__flag-container{
+            display: flex !important;
+
+            .iti__selected-flag{
+                flex-direction: row;
+
+                .iti__flag, .iti__arrow {
+                    display: inherit;
+                }
+            }
+        }
+    }
+
+    .activeTab {
+        display: flex;
+    }
+}

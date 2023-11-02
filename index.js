@@ -9,4 +9,8 @@ app.get('/', async (request, response) => {
     response.send(await readFile('./public/html/home.html', 'utf-8'));
 });
 
+app.get('/setup', async (request, response) => {
+    response.send(await readFile('./public/html/setup.html', 'utf-8'));
+});
+
 app.listen(process.env.PORT || 3000, () => console.log("Up and running at http://localhost:3000"));
