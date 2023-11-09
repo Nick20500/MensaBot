@@ -5,11 +5,11 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', async (request, response) => {
+app.get('/', async (_request, response) => {
     response.send(await readFile('./public/html/home.html', 'utf-8'));
 });
 
-app.get('/setup', async (request, response) => {
+app.get('/setup', async (_request, response) => {
     response.send(await readFile('./public/html/setup.html', 'utf-8'));
 });
 

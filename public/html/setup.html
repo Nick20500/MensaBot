@@ -6,7 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/css/base.css"/> 
         <link rel="stylesheet" type="text/css" href="/css/setup.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-        <script src="../../src/setup.ts" type="module"></script>
+        <script src="setup.ts" type="module"></script>
         <script src="https://kit.fontawesome.com/c1087ec6fc.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     </head>
@@ -20,19 +20,19 @@
             <article>
                 <header>
                     <ul class="tab-group">
-                        <li class="tab">Create Account</li>
+                        <li class="tab active">Create Account</li>
                         <li class="tab">Mensas & Menues</li>
-                        <li class="tab active">Message Settings</li>
+                        <li class="tab">Message Settings</li>
                     </ul>
                 </header>
                 <form id="login">
-                    <div id="create-account-form-part">
+                    <div class="activeTab" id="create-account-form-part">
                         <h3>Create your Mensabot Account</h3>
                         <label for="phone">Phone Number</label>
                         <input name="phone" type="tel" id="phone"/>
                         <label for="password">Password</label>
                         <input name="password" type="password" id="password"/>
-                        <a action="/">Next <i class="fa-solid fa-angle-right"></i></a>
+                        <a onclick="switchFormTab('create-account-form-part','mensas-and-menues-form-part')">Next <i class="fa-solid fa-angle-right"></i></a>
                     </div>
                     <div id="mensas-and-menues-form-part">
                         <h3>Choose the Mensas & Menues</h3>
@@ -46,7 +46,7 @@
                         </div>
                         <a action="/">Next <i class="fa-solid fa-angle-right"></i></a>
                     </div>
-                    <div class="activeTab" id="message-settings-form-part">
+                    <div id="message-settings-form-part">
                         <h3>Schedule the MensaBot messages</h3>
                         <div id="schedule-form-part">
                             <input type="checkbox" id="monday" value="monday">
