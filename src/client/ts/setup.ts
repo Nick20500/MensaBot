@@ -20,8 +20,8 @@ async function createAccount(){
             accountInfos[key] = value;
         }
 
-        const response = await fetch("/create-account", {
-            method: "POST",
+        const response = await fetch('/create-account', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -55,14 +55,14 @@ function switchFormTab(oldDivId: string, newDivId: string){
 
 async function submitForm(){
     //Get choosen Mensas    
-    const selectedMensaCheckboxes = document.querySelectorAll('#mensas-and-menues-form-part input[type="checkbox"]:checked');
+    const selectedMensaCheckboxes = document.querySelectorAll("#mensas-and-menues-form-part input[type='checkbox']:checked");
     let selectedMensas = [] as string[];
     for (const mensa of selectedMensaCheckboxes){
         selectedMensas.push(mensa.id);
     }
 
     //Get choosen Days for schedule
-    const selectedDaysCheckboxes = document.querySelectorAll('#schedule-form-part input[type="checkbox"]:checked');
+    const selectedDaysCheckboxes = document.querySelectorAll("#schedule-form-part input[type='checkbox']:checked");
     let selectedDays = [] as string[];
     for (const day of selectedDaysCheckboxes){
         selectedDays.push(day.id);
@@ -78,7 +78,7 @@ async function submitForm(){
         time: selectedTime.value,
     }
 
-    const response = await fetch("/message-setup", {
+    const response = await fetch('/message-setup', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -87,10 +87,18 @@ async function submitForm(){
     });
 
     if(response.ok){
-        //TODO: display new page where it says "mensabot setup was successfull" & short summary of the choosen settings & if the user wants changes, it can do them in the user tab
-        console.log("setting transmission to backend was GOOOD");
+        //TODO: display new page where it says 'mensabot setup was successfull' & short summary of the choosen settings & if the user wants changes, it can do them in the user tab
+        const lastFormPart = document.getElementById('message-settings-form-part');
+        lastFormPart?.classList.remove('activeFormPart');
+
+        const successPage = document.getElementById('successful-setup-page');
+        if(successPage){
+            successPage.style.display = 'flex';
+        }
+
+        console.log('setting transmission to backend was GOOOD');
     } else {
         //TODO: display error message & that user should try setup again
-        console.log("Error: " + response.status + " - " + response.statusText);
+        console.log('Error: ' + response.status + ' - ' + response.statusText);
     }
 }
