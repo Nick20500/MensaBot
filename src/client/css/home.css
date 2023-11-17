@@ -1,0 +1,38 @@
+main {  
+
+    & article {
+        & h3 {
+            text-align: center;
+            font-weight: lighter;
+            margin-bottom: 3em;
+        }
+
+        & a {
+            padding: 5px;
+            margin-top: 3em;
+            align-self: center;
+            text-align: center;
+            background-color: var(--secondary-color);
+            padding: 10px;
+            border-radius: 5px;
+            width: 30%;
+            cursor: pointer;
+            box-shadow: 0 0.375em 0 var(--base-color-dark);
+            transition-timing-function: ease-in; 
+            text-decoration: none;
+            color: inherit;
+            align-self: center;
+        }
+        & a:hover {
+            filter: brightness(85%) ;
+        }
+
+        & a:active  {
+            box-shadow: none;
+            background-color: var(--base-color-dark);
+            color: var(--base-color-bright);
+            filter: none;
+            transform: translateY(00.375em);
+        }
+    }
+}

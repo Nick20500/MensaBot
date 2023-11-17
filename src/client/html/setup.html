@@ -3,10 +3,10 @@
     <head>
         <title>MensaBot</title>
 
-        <link rel="stylesheet" type="text/css" href="/css/base.css"/> 
-        <link rel="stylesheet" type="text/css" href="/css/setup.css"/>
+        <link rel="stylesheet" type="text/css" href="/src/client/css/base.css"/> 
+        <link rel="stylesheet" type="text/css" href="/src/client/css/setup.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"/>
-        <script src="setup.ts" type="module"></script>
+        <script src="/src/client/ts/setup.ts" type="module"></script>
         <script src="https://kit.fontawesome.com/c1087ec6fc.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
     </head>
@@ -20,20 +20,22 @@
             <article>
                 <header>
                     <ul class="tab-group">
-                        <li class="tab active">Create Account</li>
-                        <li class="tab">Mensas & Menues</li>
-                        <li class="tab">Message Settings</li>
+                        <li class="tab activeTab" id="create-account-tab">Create Account</li>
+                        <li class="tab" id="mensas-and-menues-tab">Mensas & Menues</li>
+                        <li class="tab" id="message-settings-tab">Message Settings</li>
                     </ul>
                 </header>
-                <form id="login">
-                    <div class="activeTab" id="create-account-form-part">
+                <form id="create-account-form">
+                    <div class="activeFormPart" id="create-account-form-part">
                         <h3>Create your Mensabot Account</h3>
-                        <label for="phone">Phone Number</label>
-                        <input name="phone" type="tel" id="phone"/>
-                        <label for="password">Password</label>
-                        <input name="password" type="password" id="password"/>
-                        <a onclick="switchFormTab('create-account-form-part','mensas-and-menues-form-part')">Next <i class="fa-solid fa-angle-right"></i></a>
+                        <label for="phone" aria-required="true">Phone Number</label>
+                        <input name="phone" type="tel" id="phone" required/>
+                        <label for="password" aria-required="true">Password</label>
+                        <input name="password" type="password" id="password" required minlength="8"/>
+                        <button type="button" id="create-account-button">Next <i class="fa-solid fa-angle-right"></i></button>
                     </div>
+                </form>
+                <form id="setup-form">
                     <div id="mensas-and-menues-form-part">
                         <h3>Choose the Mensas & Menues</h3>
                         <div class="mensa-checkboxes">
@@ -44,7 +46,7 @@
                             <input type="checkbox" id="UZH-Oberemensa" value="UZH-Oberemensa">
                             <label for="UZH-Oberemensa">UZH - Oberemensa</label>
                         </div>
-                        <a action="/">Next <i class="fa-solid fa-angle-right"></i></a>
+                        <button type="button" id="mensas-and-menues-to-message-settings">Next <i class="fa-solid fa-angle-right"></i></button>
                     </div>
                     <div id="message-settings-form-part">
                         <h3>Schedule the MensaBot messages</h3>
@@ -63,9 +65,9 @@
                             <label for="saturday">Saturday</label>
                             <input type="checkbox" id="sunday" value="sunday">
                             <label for="sunday">Sunday</label>
-                            <input type="time" id="time" required>
+                            <input type="time" id="time" value="11:11" required>
                         </div>
-                        <button>Submit</i></button>
+                        <button type="button" id="set-message-settings">Submit</button>
                     </div>
                 </form>
             </article>

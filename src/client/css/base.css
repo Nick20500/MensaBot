@@ -50,7 +50,7 @@ body{
             height: fit-content;
         }
 
-        & a {
+        & button {
             text-align: center;
             background-color: var(--secondary-color);
             padding: 10px;
@@ -62,11 +62,11 @@ body{
             text-decoration: none;
             color: inherit;
         }
-        & a:hover {
+        & button:hover {
             filter: brightness(85%) ;
         }
 
-        & a:active  {
+        & button:active  {
             box-shadow: none;
             background-color: var(--base-color-dark);
             color: var(--base-color-bright);

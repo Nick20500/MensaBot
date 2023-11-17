@@ -11,7 +11,7 @@
     padding: 1em;
 }
 
-.active {
+.activeTab {
     background-color: var(--primary-color);
 }
 
@@ -78,35 +78,10 @@ form {
             }
         }
 
-        & a {
+        & button {
             padding: 5px;
             margin-top: 3em;
             align-self: center;
-        }
-
-        & button {
-            text-align: center;
-            background-color: var(--secondary-color);
-            padding: 10px;
-            border-radius: 5px;
-            width: 30%;
-            cursor: pointer;
-            box-shadow: 0 0.375em 0 var(--base-color-dark);
-            transition-timing-function: ease-in; 
-            text-decoration: none;
-            color: inherit;
-            align-self: center;
-        }
-        & button:hover {
-            filter: brightness(85%) ;
-        }
-
-        & button:active  {
-            box-shadow: none;
-            background-color: var(--base-color-dark);
-            color: var(--base-color-bright);
-            filter: none;
-            transform: translateY(00.375em);
         }
 
         .iti__flag-container{
@@ -122,7 +97,7 @@ form {
         }
     }
 
-    .activeTab {
+    .activeFormPart {
         display: flex;
     }
 }
